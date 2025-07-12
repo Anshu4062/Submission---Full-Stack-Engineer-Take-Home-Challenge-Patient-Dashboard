@@ -139,7 +139,7 @@ export default function UserManagementClient({
       });
       if (response.ok) {
         setUsers((currentUsers) =>
-          currentUsers.filter((user) => user._id !== userToDelete)
+          currentUsers.filter((user) => String(user._id) !== userToDelete)
         );
         toast.success("User deleted successfully!");
       } else {
@@ -170,7 +170,7 @@ export default function UserManagementClient({
         const updatedUserFromServer = await response.json();
         setUsers((currentUsers) =>
           currentUsers.map((user) =>
-            user._id === updatedUserFromServer._id
+            String(user._id) === String(updatedUserFromServer._id)
               ? updatedUserFromServer
               : user
           )
@@ -213,7 +213,10 @@ export default function UserManagementClient({
             </thead>
             <tbody>
               {users.map((user) => (
-                <tr key={user._id} className="border-b hover:bg-gray-50">
+                <tr
+                  key={String(user._id)}
+                  className="border-b hover:bg-gray-50"
+                >
                   <td className="py-3 px-4">{user.username}</td>
                   <td className="py-3 px-4">{user.email}</td>
                   <td className="py-3 px-4">{user.isAdmin ? "Yes" : "No"}</td>
@@ -225,7 +228,7 @@ export default function UserManagementClient({
                       Edit
                     </button>
                     <button
-                      onClick={() => handleDeleteClick(user._id)}
+                      onClick={() => handleDeleteClick(String(user._id))}
                       className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
                     >
                       Delete

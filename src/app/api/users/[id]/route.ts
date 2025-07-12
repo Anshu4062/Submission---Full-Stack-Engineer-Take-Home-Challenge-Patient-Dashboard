@@ -1,19 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextResponse } from "next/server";
 import dbConnect from "@/app/lib/mongo";
 import UserModel from "@/app/models/user";
 
+// This line forces the route to be rendered dynamically and is a key part of the fix.
+export const dynamic = "force-dynamic";
+
 // --- Handles updating a user's information ---
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
-  try {
-    const body = await request.json();
+  const { id } = await params;
 
-    // Remove the _id from the update payload to prevent errors
-    const { _id, ...updateData } = body;
+  try {
+    const updateData = await request.json();
+
+    // Directly delete the _id property to prevent errors and ESLint warnings.
+    delete updateData._id;
 
     await dbConnect();
 
@@ -43,9 +46,9 @@ export async function PUT(
 // --- Handles deleting a user ---
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
+  const { id } = await params;
 
   if (!id) {
     return NextResponse.json(
