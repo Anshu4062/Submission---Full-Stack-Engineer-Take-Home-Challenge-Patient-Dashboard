@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Name(Website Link- https://patientwellness.vercel.app/)
 
-## Getting Started
+Patient Wellness Portal, a web application designed to help users track their wellness journey and for administrators to manage user data. The choices outlined below were made to prioritize developer experience, scalability, performance, and security, reflecting the modern full-stack development practices used in its construction.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Getting Started
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Make sure you have [Node.js](https://nodejs.org/) and npm installed on your machine.
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+Follow these steps to set up the development environment:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Clone the repository**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    Replace `your-username/your-repository.git` with your actual repository URL.
+    ```sh
+    git clone https://github.com/Anshu4062/Submission---Full-Stack-Engineer-Take-Home-Challenge-Patient-Dashboard
+    ```
 
-## Deploy on Vercel
+2.  **Navigate to the project directory**
+    ```sh
+    cd your-repository
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3.  **Install dependencies**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    This command will download all the necessary packages for the project.
+    ```sh
+    npm install
+    ```
+
+4.  **Run the development server**
+
+    This will start the project on a local server, usually at `http://localhost:3000`.
+    ```sh
+    npm run dev
+    ```
