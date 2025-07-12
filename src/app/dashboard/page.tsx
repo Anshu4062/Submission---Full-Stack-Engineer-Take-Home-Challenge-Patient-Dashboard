@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { jwtVerify, JWTPayload } from "jose";
@@ -29,7 +30,7 @@ async function getUserData(userId: string): Promise<IUser | null> {
 }
 
 export default async function DashboardPage() {
-  const tokenCookie = cookies().get("token");
+  const tokenCookie = (await cookies()).get("token");
 
   if (!tokenCookie) {
     redirect("/");
@@ -41,7 +42,7 @@ export default async function DashboardPage() {
     userData = await getUserData(payload.id as string);
   } catch (error) {
     console.error("JWT verification failed:", error);
-    cookies().delete("token");
+    (await cookies()).delete("token");
     redirect("/");
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextResponse } from "next/server";
 import dbConnect from "@/app/lib/mongo";
 import UserModel from "@/app/models/user";
@@ -11,20 +12,15 @@ export async function PUT(
   try {
     const body = await request.json();
 
-    // We don't need to destructure here, we'll pass the whole body.
-    // However, it's good practice to remove the _id from the update payload
-    // to prevent any potential errors with trying to change the immutable _id.
+    // Remove the _id from the update payload to prevent errors
     const { _id, ...updateData } = body;
 
     await dbConnect();
 
-    // --- THE FIX IS HERE ---
-    // We use the $set operator to explicitly tell MongoDB to replace the
-    // fields with the new data provided in the updateData object.
-    // This is the most reliable way to update the entire document's content.
+    // Use the $set operator for a reliable update
     const updatedUser = await UserModel.findByIdAndUpdate(
       id,
-      { $set: updateData }, // Using the $set operator
+      { $set: updateData },
       { new: true, runValidators: true }
     ).lean();
 

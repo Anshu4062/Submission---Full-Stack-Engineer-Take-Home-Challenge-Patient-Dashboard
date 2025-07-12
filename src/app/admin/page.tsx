@@ -28,7 +28,7 @@ async function getAllUsers(): Promise<IUser[]> {
 }
 
 export default async function AdminPage() {
-  const tokenCookie = cookies().get("token");
+  const tokenCookie = (await cookies()).get("token");
   if (!tokenCookie) redirect("/");
 
   try {
@@ -50,7 +50,7 @@ export default async function AdminPage() {
 
   } catch (error) {
     console.error("Admin page error:", error);
-    cookies().delete("token");
+    (await cookies()).delete("token");
     redirect("/");
   }
 }

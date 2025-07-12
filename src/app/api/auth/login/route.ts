@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
 
     const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: "1d" });
 
-    cookies().set("token", token, {
+    (await cookies()).set("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV !== "development",
       maxAge: 60 * 60 * 24, // 1 day
