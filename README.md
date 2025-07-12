@@ -1,5 +1,7 @@
 # Project Name(Website Link- https://patientwellness.vercel.app/)
 
+Figma design Link- https://www.figma.com/design/QKG6uN393XQqfChIuumvql/Suryansh-Singh-s-team-library?node-id=3364-2&t=LdcMpxcfv3AAuvy2-1
+Figma design Image Link- https://www.behance.net/gallery/230198657/Patient-Wellness-Portal
 Patient Wellness Portal, a web application designed to help users track their wellness journey and for administrators to manage user data. The choices outlined below were made to prioritize developer experience, scalability, performance, and security, reflecting the modern full-stack development practices used in its construction.
 
 ---
